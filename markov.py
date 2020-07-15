@@ -60,8 +60,26 @@ def make_text(chains):
     """Return text from chains."""
 
     words = []
+    list_of_keys = list(chains.keys())
+    key_1 = random.choice(list_of_keys)
+    value_1 = random.choice(chains[key_1])
+    link = f'{key_1[0]} {key_1[1]} {value_1}'
 
-    # your code goes here
+    for key_1 in chains: 
+        new_key = link.split(" ")[-2:]
+        new_key_tuple = tuple(new_key)
+        if new_key_tuple in chains.keys():
+            new_value = random.choice(chains[new_key_tuple])
+            words.append(new_value)
+            key_1 = new_key_tuple
+            link = f'{new_key[0]} {new_key[1]} {new_value}'
+
+        else: 
+            break
+        #random word from the keys value 
+        #add those random word to a list 
+        #join list into string at the end 
+
 
     return " ".join(words)
 
