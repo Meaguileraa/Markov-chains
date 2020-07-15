@@ -10,9 +10,9 @@ def open_and_read_file(file_path):
     the file's contents as one string of text.
     """
 
-    # your code goes here
+    file = open(file_path).read()
 
-    return "Contents of your file as one long string"
+    return file
 
 
 def make_chains(text_string):
@@ -41,9 +41,18 @@ def make_chains(text_string):
     """
 
     chains = {}
+    words = text_string.split()
 
-    # your code goes here
+    for word in range(len(words) -2): # will stop before hitting the plus one on the last item in list 
+        keys = (words[word], words[word+1])
+        third_word = words[word+2]
+    
+        if keys in chains:
+            chains[keys].append(third_word)
+        else:
+            chains[keys] = [third_word]
 
+    print(chains)
     return chains
 
 
